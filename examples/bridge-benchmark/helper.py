@@ -4,14 +4,13 @@ import platform
 from datetime import datetime
 
 import numpy as np
-from dora import __version__
 
 LATENCY = True
 
 DATE = str(datetime.now())
 LANGUAGE = f"Python {platform.python_version()}"
 PLATFORM = platform.platform()
-DORA_VERSION = __version__
+DORA_VERSION = "0.1.0"
 LOG_HEADER = [
     "Date",
     "Language",
@@ -24,7 +23,6 @@ LOG_HEADER = [
 
 
 def record_results(name, current_size, latencies):
-
     avg_latency = np.array(latencies).mean()
 
     csv_file = os.getenv("CSV_TIME_FILE", "benchmark_data.csv")

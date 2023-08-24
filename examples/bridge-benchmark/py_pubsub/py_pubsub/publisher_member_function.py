@@ -50,8 +50,6 @@ class MinimalPublisher(Node):
         )
 
         random_data[0:8] = np.array([time.perf_counter_ns()]).view(np.uint8)
-        # print(f"data: {random_data[0:8]}")
-        print("sent!")
 
         random_data = random_data.tobytes()
         msg.data.frombytes(random_data)
@@ -69,7 +67,6 @@ import time
 
 
 def main(args=None):
-    time.sleep(20)
     rclpy.init(args=args)
 
     minimal_publisher = MinimalPublisher()

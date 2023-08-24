@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# To run:
+# to run:
 # colcon build
+# . ./install/setup.bash
 # ros2 run py_pubsub talker & python3 dora_subscriber.py
 #
 
@@ -40,11 +41,11 @@ while True:
 
     if array == None:
         continue
+    t_received = time.perf_counter_ns()
+
     data = np.array(array[0]["data"].as_py(), dtype=np.uint8)
-    print("received!")
     length = len(data)
 
-    t_received = time.perf_counter_ns()
     if length != current_size:
         if n > 0:
             record_results(NAME, current_size, latencies)
